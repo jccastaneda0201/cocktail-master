@@ -47,6 +47,7 @@ const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 3rem;
     gap: 0.5rem;
     background: transparent;
     color: var(--primary-700);
