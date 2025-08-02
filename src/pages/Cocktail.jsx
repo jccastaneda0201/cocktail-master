@@ -1,4 +1,4 @@
-import { useLoaderData, Link } from 'react-router-dom';
+import { useLoaderData, Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import Wrapper from '../assets/wrappers/CocktailPage';
 
@@ -12,6 +12,9 @@ export const loader = async ({ params }) => {
 };
 const Cocktail = () => {
   const { id, data } = useLoaderData();
+
+  if (!data) return <Navigate to="/" />;
+
   const singleDrink = data.drinks[0];
 
   const {
@@ -23,6 +26,10 @@ const Cocktail = () => {
     strInstructions: instructions,
   } = singleDrink;
 
+  const validIngredients = Object.keys(singleDrink)
+    .filter((key) => key.startsWith('strIngredient') && singleDrink[key] !== null)
+    .map((key) => singleDrink[key]);
+
   return (
     <Wrapper>
       <div className="card">
@@ -33,13 +40,28 @@ const Cocktail = () => {
           <h2 className="title">{name}</h2>
           <ul className="details">
             <li>
-              <span>Name:</span> {name}
-            </li>
-            <li>
               <span>Category:</span> {category}
             </li>
             <li>
               <span>Glass:</span> {glass}
+            </li>
+            <li>
+              <span>Ingredients:</span>
+              {validIngredients.map((item, index) => {
+                return (
+                  <div className="ing" key={item}>
+                    <img
+                      className="icon"
+                      width="48"
+                      height="48"
+                      src="https://img.icons8.com/fluency-systems-regular/48/ok--v1.png"
+                      alt="ok--v1"
+                    />
+                    {item}
+                    {index < validIngredients.length - 1 ? '' : ''}
+                  </div>
+                );
+              })}
             </li>
             <li>
               <span>Type:</span> {info}

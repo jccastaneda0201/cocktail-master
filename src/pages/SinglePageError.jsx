@@ -2,8 +2,14 @@ import { useRouteError } from 'react-router-dom';
 
 const SinglePageError = () => {
   const error = useRouteError();
-  console.log(error);
-  return <h2>{error.message}</h2>;
+  return (
+    <Wrapper>
+      <div>
+        <h3>Something went wrong</h3>
+        <Link to="/">back home</Link>
+      </div>
+    </Wrapper>
+  );
 };
 
 export default SinglePageError;

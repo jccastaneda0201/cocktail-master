@@ -110,6 +110,17 @@ const Wrapper = styled.section`
     min-width: 120px;
     display: inline-block;
   }
+  .ing {
+    display: inline-block;
+    font-weight: 500;
+    color: var(--grey-900);
+  }
+  .icon {
+    width: 18px;
+    height: auto;
+    margin: 0 10px;
+    border-radius: 50%;
+  }
 
   @media (min-width: 992px) {
     .card {
