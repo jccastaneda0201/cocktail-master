@@ -146,6 +146,7 @@ ul {
   transition: var(--transition);
   text-transform: capitalize;
   display: inline-block;
+  align-self: flex-end !important;
 }
 .btn:hover {
   background: var(--primary-700);
@@ -233,6 +234,11 @@ ul {
   border-radius: 50%;
   border-top-color: var(--primary-500);
   animation: spinner 0.6s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 30%;
 }
 
 /* TITLES */

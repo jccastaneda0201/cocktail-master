@@ -48,11 +48,7 @@ const Cocktail = () => {
               <span>Instructions:</span> {instructions}
             </li>
           </ul>
-          <Link
-            to="/"
-            className="btn'>
-          back home"
-          >
+          <Link to="/" className="back-btn">
             ← Back Home
           </Link>
         </div>
