@@ -3,8 +3,8 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   margin-bottom: 6rem;
   .form {
-    display: grid;
-    grid-template-columns: 1fr auto;
+    display: flex;
+    flex-wrap: wrap;
   }
   .form-input {
     border-top-right-radius: 0;
