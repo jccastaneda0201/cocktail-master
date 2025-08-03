@@ -1,13 +1,41 @@
+import { Form, redirect } from 'react-router-dom';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+
+const newsletterUrl = 'https://www.course-api.com/cocktails-newsletter';
+
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+
+  try {
+    const response = await axios.post(newsletterUrl, data);
+    console.log(response);
+    toast.success(response.data.msg);
+    return redirect('/');
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    console.error(error);
+  }
+};
+
 const NewsLetter = () => {
   return (
-    <form className="form">
+    <Form className="form" method="POST">
       <h4 style={{ textAlign: 'center', marginBottom: '2rem' }}>Our Newsletter</h4>
       {/*name*/}
       <div className="form-row">
         <label htmlFor="name" className="form-label">
           name
         </label>
-        <input type="text" className="form-input" name="name" id="name" defaultValue="Your name" />
+        <input
+          type="text"
+          className="form-input"
+          name="name"
+          id="name"
+          placeholder="Your name"
+          required
+        />
       </div>
       {/*name*/}
       <div className="form-row">
@@ -19,7 +47,8 @@ const NewsLetter = () => {
           className="form-input"
           name="lastName"
           id="lastName"
-          defaultValue="Your last name"
+          placeholder="Your last name"
+          required
         />
       </div>
       {/*name*/}
@@ -28,17 +57,19 @@ const NewsLetter = () => {
           Email
         </label>
         <input
-          type="text"
+          type="email"
           className="form-input"
           name="email"
           id="email"
-          defaultValue="example@example.com"
+          defaultValue="test@test.com"
+          disabled
+          required
         />
       </div>
       <button type="submit" className="form-btn">
         Subscribe
       </button>
-    </form>
+    </Form>
   );
 };
 

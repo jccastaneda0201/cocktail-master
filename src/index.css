@@ -209,9 +209,10 @@ ul {
   border-radius: 0.5rem;
   background: var(--grey-50);
   border: 1px solid var(--grey-200);
-  font-size: 0.95rem;
+  font-size: 1.1rem;
+  font-weight: 600;
   font-family: inherit;
-  color: var(--grey-300);
+  color: var(--green-dark);
   transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -233,6 +234,8 @@ ul {
 
 ::placeholder {
   color: var(--grey-400);
+  font-size: 0.95rem;
+  font-weight: 400;
 }
 
 .form-alert {
